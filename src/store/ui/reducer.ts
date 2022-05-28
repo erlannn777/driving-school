@@ -15,7 +15,7 @@ export const initialState: IUIState = {
   signUpForm: {
     data: null,
     open: false,
-  },
+  }
 };
 
 export default createReducer<IUIState>(initialState, (buiilder) =>
