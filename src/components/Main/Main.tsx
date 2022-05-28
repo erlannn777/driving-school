@@ -9,7 +9,7 @@ const Main = () => {
                         <div>
                             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded'>Projects</button>
                         </div>
-                        <div className='flex items-center justify-between bg-cyan-50 p-4'>
+                        <div className='flex items-center justify-between bg-gray-100 p-4'>
                             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded'>All</button>
                             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded'>Ongoing</button>
                             <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded'>Finished</button>
