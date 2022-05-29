@@ -5,7 +5,6 @@ import {BrowserRouter} from "react-router-dom";
 import store from "../../store/index";
 import SignInForm from "../login/SignInForm";
 import SignUpForm from "../login/SignUpForm";
-import Main from "../Main/Main";
 
 interface Props {
     children: ReactNode;
@@ -18,7 +17,6 @@ const Providers = ({children}: Props) => {
                 {children}
                 <SignInForm/>
                 <SignUpForm/>
-                <Main/>
             </BrowserRouter>
         </Provider>
     );

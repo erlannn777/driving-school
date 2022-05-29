@@ -72,11 +72,11 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="z-40">
+        <div className="">
             <div className="p-2" onClick={() => setOpen(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-black "
+                    className="h-8 w-8 text-black"
                     fill="black"
                     viewBox="0 0 24 24"
                     stroke="black"
@@ -117,15 +117,14 @@ const Sidebar = () => {
                             leaveFrom="opacity-100 translate-x-40"
                             leaveTo="opacity-0 translate-x-0"
                         >
-                            <div
-                                className="max-w-xs ml-auto fixed left-0 w-full h-full shadow-xl py-4 pb-12 flex flex-coloverflow-y-auto bg-slate-700 text-black p-5">
+                            <div className="max-w-xs ml-auto fixed left-0 w-full h-full shadow-xl py-4 pb-12 flex flex-col overflow-y-auto bg-slate-700 text-black p-5">
                                 <div
                                     className="absolute top-0 right-0 p-2"
                                     onClick={() => setOpen(false)}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-7 w-7 fill-black text-black z-40 "
+                                        className="h-7 w-7 fill-black text-white z-40 "
                                         fill="#000"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -139,7 +138,7 @@ const Sidebar = () => {
                                         />
                                     </svg>
                                 </div>
-                                <div className="w-full flex flex-col">
+                                <div className="w-full flex flex-col mt-6">
                                     <div className=" flex items-center justify-center">
                                         <div className="h-12 w-12">
                                             <img
@@ -148,7 +147,7 @@ const Sidebar = () => {
                                                 className="object-contain"
                                             />
                                         </div>
-                                        <span className="text-base font-medium text-white">
+                                        <span className="text-base font-bold text-gray-200 ml-2 ">
                                             DRIVING SCHOOL
                                         </span>
                                     </div>
@@ -157,7 +156,7 @@ const Sidebar = () => {
                                             <li className='mb-4'>
                                                 <a href="#"
                                                    className='flex items-center gap-3 text-xl text-gray-400 font-bold font-light'>
-                                                    NAVIGATION
+                                                    <span className="hover:underline font-bold">NAVIGATION</span>
                                                 </a>
                                             </li>
                                             <li className='mb-4 flex items-center justify-between text-gray-400'>
@@ -177,14 +176,13 @@ const Sidebar = () => {
                                                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                                                         />
                                                     </svg>
-                                                    <span>Dashboard</span>
+                                                    <span className="hover:underline font-bold">Dashboard</span>
                                                 </a>
                                                 <span className='bg-green-500 p-1 rounded text-white text-sm'>4</span>
                                             </li>
                                             <li className='mb-4 '>
-                                                <a href="#"
-                                                   className='flex items-center gap-3 text-xl text-gray-400 font-bold font-light'>
-                                                    APPS
+                                                <a href="#" className='flex items-center gap-3 text-xl text-gray-400 font-bold font-light'>
+                                                    <span className="hover:underline font-bold">APPS</span>
                                                 </a>
                                             </li>
                                             {links.map((item) => {
@@ -193,10 +191,10 @@ const Sidebar = () => {
                                                     <li key={id} className="py-1">
                                                         <a
                                                             href={url}
-                                                            className="flex items-center gap-3 text-xl font-light text-gray-400 font-bold"
+                                                            className="flex items-center gap-3 text-xl font-light text-gray-400"
                                                         >
                                                             <span>{icon}</span>
-                                                            <span className="hover:underline">{title}</span>
+                                                            <span className="hover:underline font-bold">{title}</span>
                                                         </a>
                                                     </li>
                                                 );
