@@ -6,7 +6,7 @@ const Profile = () => {
     return (
         <div>
             <div className='container'>
-                <div className='flex items-start justify-between p-4'>
+                <div className='flex items-start justify-between py-4'>
                     <div className='bg-white w-2/4 mx-4 p-4 rounded'>
                         <div className='flex items-center justify-center'>
                             <div className='flex-col items-center justify-center'>
@@ -39,7 +39,7 @@ const Profile = () => {
                         <div>
                             <form>
                                 <div className="mb-6">
-                                    <label className='flex justify-start'>Username</label>
+                                    <label className='flex justify-start text-gray-500'>Username</label>
                                     <input
                                         type="text"
                                         className="inputPlaceholder form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -47,7 +47,7 @@ const Profile = () => {
                                     />
                                 </div>
                                 <div className="mb-6">
-                                    <label className='flex justify-start'>FullName</label>
+                                    <label className='flex justify-start text-gray-500'>FullName</label>
                                     <input
                                         type="text"
                                         className="inputPlaceholder form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -56,7 +56,7 @@ const Profile = () => {
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleFormControlTextarea1"
-                                           className="form-label inline-block mb-2 text-gray-700"
+                                           className="form-label inline-block mb-2 text-gray-500"
                                     >Bio</label
                                     >
                                     <textarea
