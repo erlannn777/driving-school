@@ -18,7 +18,6 @@ const SignUpForm = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
@@ -26,7 +25,12 @@ const SignUpForm = () => {
       form.append("email", inputs.email);
       form.append("fullName", inputs.name);
       form.append("password", inputs.password);
-      const req = await api.post("/Auth/Registration", form);
+      const req = await api.post("/Auth/Registration", {
+        email: inputs.email,
+        fullName: inputs.name,
+        password: inputs.password,
+        errors: ["no error"],
+      });
       console.log(req);
     } catch (e) {
       console.log(e);
