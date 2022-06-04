@@ -26,6 +26,7 @@ const SignUpForm = () => {
       console.log(e);
     }
   };
+
   console.log(courses);
   useEffect(() => {
     getCourses();
