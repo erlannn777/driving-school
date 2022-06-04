@@ -1,6 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useAppDispatch} from "../../store";
+import {fetchCourses, fetchOneCourse} from "../../store/courses";
+import {useParams} from "react-router-dom";
 
 const Courses = () => {
+    const dispatch=useAppDispatch()
+    const params=useParams()
+    console.log(params)
+useEffect(()=>{
+    if(!params.id)return
+    dispatch(fetchOneCourse(Number(params.id)) as any)
+
+})
     return (
         <div>
             <div className="container flex flex-col">

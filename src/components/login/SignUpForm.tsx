@@ -18,19 +18,6 @@ const SignUpForm = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const getCourses = async () => {
-    try {
-      const res: any = await api.get("/Course/GetAllCourses");
-      setCourses(res);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  console.log(courses);
-  useEffect(() => {
-    getCourses();
-  }, []);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -40,7 +27,6 @@ const SignUpForm = () => {
       form.append("fullName", inputs.name);
       form.append("password", inputs.password);
       const req = await api.post("/Auth/Registration", form);
-
       console.log(req);
     } catch (e) {
       console.log(e);

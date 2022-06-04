@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useCourses} from "../../store/courses/hooks";
+import {fetchCourses} from "../../store/courses";
+import {useAppDispatch} from "../../store";
+import {Link} from "react-router-dom";
 
 const Home = () => {
+    const courses = useCourses()
+    const dispatch = useAppDispatch()
+    console.log(courses)
+    useEffect(() => {
+        dispatch(fetchCourses() as any)
+
+    }, [])
     return (
         <div className='mt-18'>
+
             <div className='container'>
                 <div>
                     <div className='flex items-center justify-between'>
@@ -23,33 +35,45 @@ const Home = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg mt-8">
-                        <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            <span className='bg-green-500 p-1 rounded text-white'>Finished</span>
-                            <p className="text-gray-700 text-base mt-8">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
-                        <div className='px-6 py-4'>
-                            <div className='flex items-center justify-start'>
-                                <div>
-                                    21 <span className='text-gray-400'>Tasks</span>
+
+
+
+                    <div className='grid grid-cols-4 gap-4'>
+                        {courses.map((el:any) => (
+                            <div key={el.id}>
+                                <Link to={`/theme/${el.id}`}>
+                                <div className="max-w-sm rounded overflow-hidden shadow-lg mt-8">
+                                    <div className="px-6 py-4">
+                                        <div className="font-bold text-xl mb-2">{el.name}</div>
+                                        <span className='bg-green-500 p-1 rounded text-white'>Finished</span>
+                                        <p className="text-gray-700 text-base mt-8">{el.description}</p>
+                                    </div>
+                                    <div className='px-6 py-4'>
+                                        <div className='flex items-center justify-start'>
+                                            <div>
+                                                21 <span className='text-gray-400'>Tasks</span>
+                                            </div>
+                                            <div className='ml-8'>
+                                                741 <span className='text-gray-400'>Comments</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="px-6 pt-4 pb-2">
+                                        <div className='flex items-center justify-between'>
+                                            <span>Progress</span>
+                                            <span>{el.progress}%</span>
+                                        </div>
+                                        <div className=" bg-gray-200 h-1 mb-6">
+                                            <div className="bg-green-500 h-1" style={{width: `${el.progress}%`}}/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className='ml-8'>
-                                    741 <span className='text-gray-400'>Comments</span>
-                                </div>
+                                </Link>
                             </div>
-                        </div>
-                        <div className="px-6 pt-4 pb-2">
-                            <div className='flex items-center justify-between'>
-                                <span>Progress</span>
-                                <span>100%</span>
-                            </div>
-                            <div className='w-full h-1 bg-gray-300 my-4'/>
-                        </div>
+                        ))}
                     </div>
+
                 </div>
             </div>
         </div>
