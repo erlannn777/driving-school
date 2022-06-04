@@ -1,4 +1,8 @@
-import {createAction} from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
-export const fetchCoursesSuccess = createAction<[]>("ui/fetchCoursesSuccess");
-export const fetchOneCourseSuccess = createAction<[]>("ui/fetchOneCourseSuccess");
+export const fetchCoursesSuccess = createAction<[]>(
+  "courses/fetchCoursesSuccess"
+);
+export const fetchOneCourseSuccess = createAction<[]>(
+  "courses/fetchOneCourseSuccess"
+);
