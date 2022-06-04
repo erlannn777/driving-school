@@ -15,7 +15,7 @@ const SignUpForm = () => {
         password: '',
     })
 
-
+    console.log(inputs)
     const getCourses = async () => {
         try {
             const res:any =await api.get('/Course/GetAllCourses')
