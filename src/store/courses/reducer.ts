@@ -1,14 +1,35 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { fetchCoursesSuccess } from "./actions";
+import {
+  fetchCoursesSuccess,
+  fetchLecturesSuccess,
+  fetchOneCourseSuccess,
+  fetchOneLectureSuccess,
+} from "./actions";
 import { ICoursesState } from "./interface/data.interface";
 
 export const initialState: ICoursesState = {
   courses: [],
+  course: [],
+  lectures: [],
+  lecture: {},
 };
 
 export default createReducer<ICoursesState>(initialState, (builder) =>
-  builder.addCase(
-    fetchCoursesSuccess,
-    (state, { payload }): ICoursesState => ({ ...state, courses: payload })
-  )
+  builder
+    .addCase(
+      fetchCoursesSuccess,
+      (state, { payload }): ICoursesState => ({ ...state, courses: payload })
+    )
+    .addCase(
+      fetchOneCourseSuccess,
+      (state, { payload }): ICoursesState => ({ ...state, course: payload })
+    )
+    .addCase(
+      fetchLecturesSuccess,
+      (state, { payload }): ICoursesState => ({ ...state, lectures: payload })
+    )
+    .addCase(
+      fetchOneLectureSuccess,
+      (state, { payload }): ICoursesState => ({ ...state, lecture: payload })
+    )
 );
