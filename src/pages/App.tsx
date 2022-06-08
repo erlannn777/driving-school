@@ -4,7 +4,6 @@ import Header from "../components/header";
 import Home from "./home";
 import Providers from "../components/providers";
 import Profile from "./profile";
-import Test from "./test";
 import Courses from "./courses";
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile/>}/>
-          <Route path='/test' element={<Test/>}/>
           <Route path='/theme/:id' element={<Courses/>}/>
       </Routes>
     </Providers>

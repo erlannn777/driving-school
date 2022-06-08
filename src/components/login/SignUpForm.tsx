@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAppDispatch } from "../../store";
 import { useSignUpForm } from "../../store/ui/hooks";
 import { closeSignInForm, closeSignUpForm } from "../../store/ui/actions";
-import api from "../../constants/api";
+import {API} from "../../constants/api";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +18,8 @@ const SignUpForm = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
+
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
@@ -25,7 +27,7 @@ const SignUpForm = () => {
       form.append("email", inputs.email);
       form.append("fullName", inputs.name);
       form.append("password", inputs.password);
-      const req = await api.post("/Auth/Registration", {
+      const req = await API.post("/Auth/Registration", {
         email: inputs.email,
         fullName: inputs.name,
         password: inputs.password,
@@ -36,6 +38,7 @@ const SignUpForm = () => {
       console.log(e);
     }
   };
+
 
   return (
     <Transition.Root show={showError.open} as={Fragment}>

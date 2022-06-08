@@ -10,7 +10,6 @@ const Home = () => {
     console.log(courses)
     useEffect(() => {
         dispatch(fetchCourses() as any)
-
     }, [])
     return (
         <div className='mt-18'>
