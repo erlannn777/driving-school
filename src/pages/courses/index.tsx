@@ -53,7 +53,7 @@ const Courses = () => {
                     <li className="">
                       <a
                         className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                        href="#"
+                        href="/"
                       >
                         One
                       </a>
@@ -61,7 +61,7 @@ const Courses = () => {
                     <li className="">
                       <a
                         className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                        href="#"
+                        href="/"
                       >
                         Two
                       </a>
@@ -69,7 +69,7 @@ const Courses = () => {
                     <li className="">
                       <a
                         className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                        href="#"
+                        href="/"
                       >
                         Three is the magic number
                       </a>
@@ -114,13 +114,15 @@ const Courses = () => {
                   {course ? (
                     course.map((theme: any, id) => (
                       <tr key={id} className="border-b">
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                           <Link to={`/lectures/${theme.id}`}>{theme.name}</Link>
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {theme.status}
+                          <span className="bg-blue-200 p-1 rounded font-bold text-blue-700">
+                            {theme.status}
+                          </span>
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm font-medium text-gray-900 px-6 py-4">
                           {theme.amountLecture}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
