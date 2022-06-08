@@ -6,3 +6,9 @@ export const fetchCoursesSuccess = createAction<[]>(
 export const fetchOneCourseSuccess = createAction<[]>(
   "courses/fetchOneCourseSuccess"
 );
+export const fetchLecturesSuccess = createAction<[]>(
+  "courses/fetchOneLecturesSuccess"
+);
+export const fetchOneLectureSuccess = createAction<[]>(
+  "courses/fetchOneLectureSuccess"
+);

@@ -3,12 +3,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useAppDispatch } from "../../store";
 import { useSignUpForm } from "../../store/ui/hooks";
 import { closeSignInForm, closeSignUpForm } from "../../store/ui/actions";
-import {API} from "../../constants/api";
+import API from "../../constants/api";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const showError = useSignUpForm();
-  const [courses, setCourses] = useState();
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -23,17 +22,15 @@ const SignUpForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const form = new FormData();
-      form.append("email", inputs.email);
-      form.append("fullName", inputs.name);
-      form.append("password", inputs.password);
-      const req = await API.post("/Auth/Registration", {
+
+      const res = await API.post("/Auth/Registration", {
         email: inputs.email,
         fullName: inputs.name,
         password: inputs.password,
         errors: ["no error"],
       });
-      console.log(req);
+      localStorage.setItem("token", res.data.token);
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
