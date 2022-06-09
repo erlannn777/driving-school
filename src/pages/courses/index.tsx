@@ -93,7 +93,7 @@ const Courses = () => {
               />
             </div>
           </div>
-          <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 sm:p-2 md:container">
+          <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 md:container">
             <div className="overflow-x-scroll   hide-scrollbar">
               <table className="min-w-full">
                 <thead className="border-b border-b bg-blue-100 border-blue-200">
@@ -141,7 +141,6 @@ const Courses = () => {
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           <Link to={`/test/${theme.id}`}>
-                            {" "}
                             <button
                               type="button"
                               className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
