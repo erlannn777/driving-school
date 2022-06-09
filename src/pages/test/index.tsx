@@ -56,6 +56,8 @@ const Test = () => {
     setShowResults(true);
   };
 
+  {console.log('questions',questions)}
+
   return (
     <div className="App">
       {!showResults && questions && (

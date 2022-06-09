@@ -16,9 +16,15 @@ const LectureDetails = () => {
   return (
     <div className="w-full flex justify-center">
       {lecture ? (
-        <div className="w-11/12 flex flex-col justify-center" key={lecture.id}>
-          <span>{lecture.name}</span>
-          <span>{lecture.description}</span>
+        <div className="w-11/12 flex items-center justify-center" key={lecture.id}>
+          <div className='flex flex-col justify-center items-center'>
+            <span className='text-3xl text-gray-600 font-bold mt-12'>
+              {lecture.name}
+            </span>
+            <span className='text-xl text-gray-600 py-4 tracking-widest'>
+              {lecture.description}
+            </span>
+          </div>
         </div>
       ) : (
         "Лекции нет"

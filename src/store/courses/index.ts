@@ -1,4 +1,3 @@
-import api from "../../constants/api";
 import {
   fetchCoursesSuccess,
   fetchOneCourseSuccess,
@@ -6,11 +5,12 @@ import {
   fetchOneLectureSuccess,
 } from "./actions";
 import { Dispatch } from "@reduxjs/toolkit";
-import API from "../../constants/api";
+import API, {publicApi} from "../../constants/api";
+import api from "../../constants/api";
 
 export const fetchCourses = () => async (dispatch: Dispatch) => {
   try {
-    const res: any = await api.get("/Course/GetAllCourses");
+    const res: any = await publicApi.get("/Course/GetAllCourses");
     dispatch(fetchCoursesSuccess(res.data));
   } catch (e) {
     console.log(e);

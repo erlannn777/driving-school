@@ -12,7 +12,7 @@ const Home = () => {
     dispatch(fetchCourses() as any);
   }, []);
   return (
-    <div className="mt-18">
+    <div className="mt-18 sm:mt-8">
       <div className="container sm:max-w-full">
         <div>
           <div className="flex items-center justify-between">
@@ -21,14 +21,14 @@ const Home = () => {
                 Projects
               </button>
             </div>
-            <div className="flex items-center justify-between bg-gray-100 p-4">
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+            <div className="flex items-center justify-between bg-gray-100 p-4 sm:p-0">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 All
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Ongoing
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Finished
               </button>
             </div>
