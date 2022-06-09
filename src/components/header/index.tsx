@@ -1,4 +1,5 @@
 import React from "react";
+import { Lupa } from "../../pages/lectures/assets";
 import { useAppDispatch } from "../../store";
 import { openSignInForm, openSignUpForm } from "../../store/ui/actions";
 import Sidebar from "./Sidebar";
@@ -8,10 +9,13 @@ const Header = () => {
 
   return (
     <header className="py-2 bg-white  text-center">
-      <div className="container flex justify-between items-center">
-        <div className="flex items-center justify-around">
+      <div className="container flex justify-between items-center lg:flex lg:jutify-between lg:items-center sm:block sm:max-w-full">
+        <div className="flex items-center justify-between">
           <Sidebar />
-          <div className="relative w-full w-80">
+          <div className="lg:hidden sm:block">
+            <Lupa />
+          </div>
+          <div className="relative w-full w-80 lg:block sm:hidden">
             <input
               type="search"
               id="search-dropdown"
@@ -39,7 +43,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-around">
+        <div className="flex items-center justify-between">
           <button
             onClick={() =>
               dispatch(

@@ -7,6 +7,7 @@ import Profile from "./profile";
 import Courses from "./courses";
 import Lectures from "./lectures";
 import LectureDetails from "./lectures/LectureDetails";
+import Test from "./test";
 function App() {
   return (
     <Providers>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/theme/:id" element={<Courses />} />
         <Route path="/lectures/:id" element={<Lectures />} />
         <Route path="/lecture/:id" element={<LectureDetails />} />
+        <Route path="/test/:id" element={<Test />} />
       </Routes>
     </Providers>
   );

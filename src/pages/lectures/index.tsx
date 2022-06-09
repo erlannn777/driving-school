@@ -9,7 +9,7 @@ import { Lupa } from "./assets";
 const Lectures = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
-  const lectures = useLectures();
+  const lectures: any = useLectures();
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchLectures(Number(params.id)) as any);
@@ -20,7 +20,7 @@ const Lectures = () => {
     <div className="container min-h-screen">
       <div className="w-full grid grid-cols-2 gap-12">
         {lectures
-          ? lectures.map((lecture: any, id) => (
+          ? lectures.map((lecture: any, id: number) => (
               <div key={id} className="w-96 flex justify-between m-4">
                 <div className="m-2">
                   <div className="bg-blue-200 p-1 rounded-full">
