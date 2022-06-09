@@ -19,8 +19,8 @@ const Courses = () => {
         <div>
             <div className="flex flex-col sm:max-w-full">
                 <div className="overflow-x-auto">
-                    <div className='container'>
-                        <div className="flex items-center justify-between sm:w-full">
+                    <div className='container sm:max-w-full'>
+                        <div className="flex items-center justify-between">
                             <div>
                                 <button
                                     type="button"
@@ -96,7 +96,7 @@ const Courses = () => {
                             />
                         </div>
                     </div>
-                    <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 sm:p-2">
+                    <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 sm:p-2 md:container">
                         <div className="overflow-x-scroll   hide-scrollbar">
                             <table className="min-w-full">
                                 <thead className="border-b border-b bg-blue-100 border-blue-200">

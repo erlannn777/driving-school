@@ -13,16 +13,16 @@ const Header = () => {
                 <div className="flex justify-between items-center lg:flex lg:jutify-between lg:items-center  sm:max-w-full">
                     <div className="flex items-center justify-between">
                         <Sidebar/>
-                        <div className="relative w-full w-80 lg:block sm:hidden">
+                        <div className="relative w-full w-80 lg:block md:block sm:hidden md:w-64">
                             <input
                                 type="search"
                                 id="search-dropdown"
-                                className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded focus:outline-none   border border-gray-300 "
+                                className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded focus:outline-none border border-gray-300 md:p-2"
                                 placeholder="Search"
                             />
                             <button
                                 type="submit"
-                                className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r border border-blue-700 hover:bg-blue-800"
+                                className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r border border-blue-700 hover:bg-blue-800 md:p-2"
                             >
                                 <svg
                                     className="w-5 h-5"
@@ -70,7 +70,7 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
-                <div className="relative w-full w-80 lg:hidden sm:block">
+                <div className="relative w-full w-80 lg:hidden md:hidden sm:block">
                     <input
                         type="search"
                         id="search-dropdown"

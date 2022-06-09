@@ -18,7 +18,7 @@ const Lectures = () => {
 
   return (
     <div className="container min-h-screen">
-      <div className="w-full grid grid-cols-2 gap-12">
+      <div className="w-full grid grid-cols-2 gap-12 sm:grid sm:grid-cols-1 md:grid md:grid-cols-2">
         {lectures
           ? lectures.map((lecture: any, id: number) => (
               <div key={id} className="w-96 flex justify-between m-4">
