@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAppDispatch } from "../../store";
 import { useSignUpForm } from "../../store/ui/hooks";
-import { closeSignInForm, closeSignUpForm } from "../../store/ui/actions";
+import { closeSignUpForm } from "../../store/ui/actions";
 import API from "../../constants/api";
 
 const SignUpForm = () => {
@@ -110,6 +110,7 @@ const SignUpForm = () => {
                             placeholder="Имя"
                             name="name"
                             onChange={handleChange}
+                            value={inputs.name}
                             required
                           />
                         </div>
@@ -122,6 +123,7 @@ const SignUpForm = () => {
                             placeholder="Почта"
                             name="email"
                             onChange={handleChange}
+                            value={inputs.email}
                             required
                           />
                         </div>
@@ -134,13 +136,14 @@ const SignUpForm = () => {
                             placeholder="Пароль"
                             name="password"
                             onChange={handleChange}
+                            value={inputs.password}
                             required
                           />
                         </div>
 
                         <div className="flex justify-between items-center mb-6">
                           <a
-                            href="#"
+                            href="/"
                             className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
                           >
                             Забыл пароль?

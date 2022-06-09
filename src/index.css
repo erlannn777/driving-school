@@ -25,3 +25,6 @@ code {
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+}

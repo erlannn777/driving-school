@@ -15,7 +15,7 @@ export const initialState: IUIState = {
   signUpForm: {
     data: null,
     open: false,
-  }
+  },
 };
 
 export default createReducer<IUIState>(initialState, (buiilder) =>
@@ -24,7 +24,10 @@ export default createReducer<IUIState>(initialState, (buiilder) =>
       openSignInForm,
       (state, { payload }): IUIState => ({
         ...state,
-        signInForm: payload,
+        signInForm: {
+          ...state.signInForm,
+          open: true,
+        },
       })
     )
     .addCase(

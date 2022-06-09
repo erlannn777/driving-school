@@ -4,6 +4,7 @@ import {
   fetchLecturesSuccess,
   fetchOneCourseSuccess,
   fetchOneLectureSuccess,
+  fetchTestSuccess,
 } from "./actions";
 import { ICoursesState } from "./interface/data.interface";
 
@@ -12,6 +13,7 @@ export const initialState: ICoursesState = {
   course: [],
   lectures: [],
   lecture: {},
+  test: {},
 };
 
 export default createReducer<ICoursesState>(initialState, (builder) =>
@@ -31,5 +33,9 @@ export default createReducer<ICoursesState>(initialState, (builder) =>
     .addCase(
       fetchOneLectureSuccess,
       (state, { payload }): ICoursesState => ({ ...state, lecture: payload })
+    )
+    .addCase(
+      fetchTestSuccess,
+      (state, { payload }): ICoursesState => ({ ...state, test: payload })
     )
 );

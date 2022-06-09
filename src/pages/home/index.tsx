@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { useCourses } from "../../store/courses/hooks";
-import { fetchCourses, fetchTest } from "../../store/courses";
+import { fetchCourses } from "../../store/courses";
 import { useAppDispatch } from "../../store";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const courses = useCourses();
   const dispatch = useAppDispatch();
-  console.log(courses);
+
   useEffect(() => {
     dispatch(fetchCourses() as any);
-    dispatch(fetchTest(1) as any);
-  }, []);
+  }, [dispatch]);
+
   return (
-    <div className="mt-18">
+    <div className="mt-18 sm:mt-8">
       <div className="container sm:max-w-full">
         <div>
           <div className="flex items-center justify-between">
@@ -22,20 +22,20 @@ const Home = () => {
                 Projects
               </button>
             </div>
-            <div className="flex items-center justify-between bg-gray-100 p-4">
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+            <div className="flex items-center justify-between bg-gray-100 p-4 sm:p-0">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 All
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Ongoing
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Finished
               </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-4 lg:grid lg:grid-cols-4 sm:grid sm:grid-cols-1">
+          <div className="grid grid-cols-4 gap-4 lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 sm:grid sm:grid-cols-1">
             {courses.map((el: any) => (
               <div key={el.id}>
                 <Link to={`/theme/${el.id}`}>

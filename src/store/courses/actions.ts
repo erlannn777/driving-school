@@ -12,3 +12,5 @@ export const fetchLecturesSuccess = createAction<[]>(
 export const fetchOneLectureSuccess = createAction<[]>(
   "courses/fetchOneLectureSuccess"
 );
+
+export const fetchTestSuccess = createAction<[]>("courses/fetchTestSuccess");

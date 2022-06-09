@@ -3,4 +3,5 @@ export interface ICoursesState {
   course: [];
   lectures: [];
   lecture: {};
+  test: {};
 }

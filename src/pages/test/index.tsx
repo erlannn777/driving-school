@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import axios from "axios";
 import Question from "./Question";
+import { useTest } from "../../store/courses/hooks";
+import { useAppDispatch } from "../../store";
+import { fetchTest } from "../../store/courses";
+import { useParams } from "react-router-dom";
 
 const Test = () => {
-  const [questions, setQuestions] = useState(false);
+  const dispatch = useAppDispatch();
+  const params = useParams();
+  const test: any = useTest();
+  const [questions, setQuestions] = useState<[]>();
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
-  const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
-  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://opentdb.com/api.php?amount=3&category=11&difficulty=medium&type=multiple`
-      )
-      .then((res) => {
-        console.log(res);
+    if (!params.id) return;
+    dispatch(fetchTest(Number(params.id)) as any);
+  }, [dispatch, params.id]);
 
-        setTotalQuestions(res.data.results.length);
-        setQuestions(res.data.results);
-      });
-  }, []);
+  useEffect(() => {
+    if (!test || !test.questions) return;
+    setTotalQuestions(test.questions?.length);
+    setQuestions(test.questions);
+  }, [test]);
 
   const proceed = (e: any) => {
     e.preventDefault();
@@ -31,16 +33,13 @@ const Test = () => {
     e.preventDefault();
     setActiveQuestion(activeQuestion - 1);
   };
+
   const addAnswers = (formData: any) => {
     const values: any = {};
-    let totalValue = 0;
     for (var pair of formData.entries()) {
-      console.log(pair);
-
       var key = pair[0];
       var value = pair[1];
 
-      totalValue += parseFloat(value);
       if (values[key]) {
         if (!(values[key] instanceof Array)) {
           values[key] = new Array(values[key]);
@@ -50,41 +49,32 @@ const Test = () => {
         values[key] = value;
       }
     }
-    setTotalCorrectAnswers(totalValue);
     console.log(values);
   };
+
   const submit = (e: any) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     addAnswers(formData);
-    setShowResults(true);
   };
 
   return (
     <div className="App">
-      {!showResults && questions && (
+      {questions ? (
         <form onSubmit={submit}>
           {questions.map((data: any, i: any) => {
-            const allAnswers = [
-              {
-                id: 0,
-                answer: data.correct_answer,
-                correct: 1,
-              },
-            ];
-            data.incorrect_answers.forEach((answer: any, i: any) => {
+            const allAnswers: any = [];
+            data.answers.forEach((answer: any, i: any) => {
               allAnswers.push({
-                id: i + 1,
-                answer: answer,
-                correct: 0,
+                id: answer.answerId,
+                answer: answer.textAnswer,
               });
             });
             return (
               <Question
                 key={i}
                 name={`q-${i}`}
-                category={data.category}
-                question={data.question}
+                question={data.questionText}
                 visible={i === activeQuestion}
                 answers={allAnswers}
               />
@@ -102,12 +92,8 @@ const Test = () => {
             <button type="submit">Submit</button>
           )}
         </form>
-      )}
-
-      {showResults && (
-        <p>
-          You got {totalCorrectAnswers} out of {totalQuestions}
-        </p>
+      ) : (
+        <span>Теста нет</span>
       )}
     </div>
   );

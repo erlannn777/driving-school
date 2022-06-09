@@ -16,3 +16,7 @@ export const useLectures = (): [] => {
 export const useOneLecture = (): {} => {
   return useSelector((state: Store) => state.courses.lecture);
 };
+
+export const useTest = (): {} => {
+  return useSelector((state: Store) => state.courses.test);
+};

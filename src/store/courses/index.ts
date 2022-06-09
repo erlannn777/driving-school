@@ -1,16 +1,16 @@
-import api from "../../constants/api";
 import {
   fetchCoursesSuccess,
   fetchOneCourseSuccess,
   fetchLecturesSuccess,
   fetchOneLectureSuccess,
+  fetchTestSuccess,
 } from "./actions";
 import { Dispatch } from "@reduxjs/toolkit";
-import API from "../../constants/api";
+import API, { publicApi } from "../../constants/api";
 
 export const fetchCourses = () => async (dispatch: Dispatch) => {
   try {
-    const res: any = await api.get("/Course/GetAllCourses");
+    const res: any = await publicApi.get("/Course/GetAllCourses");
     dispatch(fetchCoursesSuccess(res.data));
   } catch (e) {
     console.log(e);
@@ -20,7 +20,6 @@ export const fetchCourses = () => async (dispatch: Dispatch) => {
 export const fetchOneCourse = (id: number) => async (dispatch: Dispatch) => {
   try {
     const res: any = await API.get(`/Theme/GetAllThemes?courseId=${id}`);
-    // const res: any = await API.get(`/Course/Get?Id=${id}`);
     dispatch(fetchOneCourseSuccess(res.data));
   } catch (e) {
     console.log(e);
@@ -47,8 +46,8 @@ export const fetchOneLecture = (id: number) => async (dispatch: Dispatch) => {
 
 export const fetchTest = (id: number) => async (dispatch: Dispatch) => {
   try {
-    const res: any = await API.get(`/Test/GetTest?themeId=5000`);
-    dispatch(fetchOneLectureSuccess(res.data));
+    const res: any = await API.get(`/Test/GetTest?themeId=${id}`);
+    dispatch(fetchTestSuccess(res.data));
   } catch (e) {
     console.log(e);
   }
