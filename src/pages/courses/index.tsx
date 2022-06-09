@@ -96,7 +96,7 @@ const Courses = () => {
                             />
                         </div>
                     </div>
-                    <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 sm:p-2 md:container">
+                    <div className="py-2 inline-block min-w-full g:px-8 sm:w-64 md:container">
                         <div className="overflow-x-scroll   hide-scrollbar">
                             <table className="min-w-full">
                                 <thead className="border-b border-b bg-blue-100 border-blue-200">

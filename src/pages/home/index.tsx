@@ -34,7 +34,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-4 lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 sm:grid sm:grid-cols-1">
+          <div className="grid grid-cols-4 gap-4 lg:grid lg:grid-cols-4 md:grid sm:grid sm:grid-cols-1">
             {courses.map((el: any) => (
               <div key={el.id}>
                 <Link to={`/theme/${el.id}`}>
