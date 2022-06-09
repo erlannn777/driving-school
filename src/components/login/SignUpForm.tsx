@@ -17,12 +17,9 @@ const SignUpForm = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-
       const res = await API.post("/Auth/Registration", {
         email: inputs.email,
         fullName: inputs.name,
@@ -30,12 +27,10 @@ const SignUpForm = () => {
         errors: ["no error"],
       });
       localStorage.setItem("token", res.data.token);
-      console.log(res);
     } catch (e) {
       console.log(e);
     }
   };
-
 
   return (
     <Transition.Root show={showError.open} as={Fragment}>

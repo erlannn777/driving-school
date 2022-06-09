@@ -20,12 +20,12 @@ const SignInForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const req = await api.post("/Auth/Login", {
+      const res = await api.post("/Auth/Login", {
         email: inputs.email,
         password: inputs.password,
         errors: ["no error"],
       });
-      console.log(req);
+      localStorage.setItem("token", res.data.token);
     } catch (e) {
       console.log(e);
     }

@@ -16,6 +16,8 @@ const Test = () => {
         `https://opentdb.com/api.php?amount=3&category=11&difficulty=medium&type=multiple`
       )
       .then((res) => {
+        console.log(res);
+
         setTotalQuestions(res.data.results.length);
         setQuestions(res.data.results);
       });
@@ -33,6 +35,8 @@ const Test = () => {
     const values: any = {};
     let totalValue = 0;
     for (var pair of formData.entries()) {
+      console.log(pair);
+
       var key = pair[0];
       var value = pair[1];
 

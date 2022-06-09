@@ -44,3 +44,12 @@ export const fetchOneLecture = (id: number) => async (dispatch: Dispatch) => {
     console.log(e);
   }
 };
+
+export const fetchTest = (id: number) => async (dispatch: Dispatch) => {
+  try {
+    const res: any = await API.get(`/Test/GetTest?themeId=5000`);
+    dispatch(fetchOneLectureSuccess(res.data));
+  } catch (e) {
+    console.log(e);
+  }
+};

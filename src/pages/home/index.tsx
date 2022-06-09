@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useCourses } from "../../store/courses/hooks";
-import { fetchCourses } from "../../store/courses";
+import { fetchCourses, fetchTest } from "../../store/courses";
 import { useAppDispatch } from "../../store";
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,7 @@ const Home = () => {
   console.log(courses);
   useEffect(() => {
     dispatch(fetchCourses() as any);
+    dispatch(fetchTest(1) as any);
   }, []);
   return (
     <div className="mt-18">
