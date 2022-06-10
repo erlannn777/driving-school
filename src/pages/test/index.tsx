@@ -5,6 +5,7 @@ import { useTest } from "../../store/courses/hooks";
 import { useAppDispatch } from "../../store";
 import { fetchTest } from "../../store/courses";
 import { useParams } from "react-router-dom";
+import API from "../../constants/api";
 
 const Test = () => {
   const dispatch = useAppDispatch();
@@ -35,27 +36,46 @@ const Test = () => {
   };
 
   const addAnswers = (formData: any) => {
-    const values: any = {};
-    for (var pair of formData.entries()) {
-      var key = pair[0];
-      var value = pair[1];
-
-      if (values[key]) {
-        if (!(values[key] instanceof Array)) {
-          values[key] = new Array(values[key]);
+    try {
+      const values: any = {};
+      for (var pair of formData) {
+        var key = pair[0];
+        var value = pair[1];
+        console.log(pair);
+        if (values[key]) {
+          if (!(values[key] instanceof Array)) {
+            values[key] = new Array(values[key]);
+          }
+          values[key].push(value);
+        } else {
+          values[key] = value;
         }
-        values[key].push(value);
-      } else {
-        values[key] = value;
       }
+      // API.post(`/Test/SendResult?themeId=${params.id}`, {
+      //   questionId: "",
+      //   questionText: "",
+      //   answers: [
+      //     {
+      //       answerId: "",
+      //       textAnswer: "",
+      //     },
+      //   ],
+      // });
+    } catch (e) {
+      console.log(e);
     }
-    console.log(values);
   };
 
   const submit = (e: any) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     addAnswers(formData);
+    const erlan = formData.entries();
+    console.log(e);
+
+    // erlan.map((item: any) => {
+    //   console.log(item);
+    // });
   };
 
   return (
@@ -73,8 +93,8 @@ const Test = () => {
             return (
               <Question
                 key={i}
-                name={`q-${i}`}
-                question={data.questionText}
+                questionText={data.questionText}
+                questionId={data.id}
                 visible={i === activeQuestion}
                 answers={allAnswers}
               />

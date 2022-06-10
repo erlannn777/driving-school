@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../store";
 import { openSignInForm, openSignUpForm } from "../../store/ui/actions";
 import Sidebar from "./Sidebar";
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const [hideLogin, setHideLogin] = useState(true);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setHideLogin(false);
+    }
+  }, []);
   return (
     <header className="py-2 bg-white  text-center">
       <div className="container ">
@@ -40,7 +47,11 @@ const Header = () => {
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-between ml-6">
+          <div
+            className={`flex items-center justify-between ml-6 ${
+              hideLogin ? "block" : "hidden"
+            }`}
+          >
             <button
               onClick={() =>
                 dispatch(

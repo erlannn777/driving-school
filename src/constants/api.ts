@@ -25,6 +25,7 @@ API.interceptors.response.use(
       originalRequest._isRetry = true;
       try {
         alert("Пожалуйста, войдите в систему");
+        localStorage.removeItem("token");
       } catch (e) {
         return Promise.reject(e);
       }

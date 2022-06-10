@@ -7,7 +7,9 @@ import API from "../../constants/api";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
-  const showError = useSignUpForm();
+  const signUpModal = useSignUpForm();
+  const [errorMessage, setErrorMessage] = useState<string>();
+
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -26,14 +28,19 @@ const SignUpForm = () => {
         password: inputs.password,
         errors: ["no error"],
       });
-      localStorage.setItem("token", res.data.token);
+      if (res.data.errors) {
+        setErrorMessage(res.data.errors[0]);
+      } else {
+        localStorage.setItem("token", res.data.token);
+        dispatch(closeSignUpForm());
+      }
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <Transition.Root show={showError.open} as={Fragment}>
+    <Transition.Root show={signUpModal.open} as={Fragment}>
       <Dialog
         as="div"
         className="fixed z-20 inset-0 overflow-y-auto"
@@ -140,6 +147,13 @@ const SignUpForm = () => {
                             required
                           />
                         </div>
+                        {errorMessage ? (
+                          <div className="flex justify-between items-center mb-6">
+                            <span className="text-red-600 hover:text-red-800 focus:text-red-700 active:text-red-800 duration-200 transition ease-in-out">
+                              {errorMessage}
+                            </span>
+                          </div>
+                        ) : null}
 
                         <div className="flex justify-between items-center mb-6">
                           <a

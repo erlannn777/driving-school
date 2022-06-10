@@ -7,7 +7,8 @@ import api from "../../constants/api";
 
 const SignInForm = () => {
   const dispatch = useAppDispatch();
-  const showError = useSignInForm();
+  const signInModal = useSignInForm();
+  const [errorMessage, setErrorMessage] = useState<string>();
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -20,20 +21,24 @@ const SignInForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await api.post("/Auth/Login", {
+      const res: any = await api.post("/Auth/Login", {
         email: inputs.email,
         password: inputs.password,
         errors: ["no error"],
       });
-      localStorage.setItem("token", res.data.token);
+      if (res.data.errors) {
+        setErrorMessage(res.data.errors[0]);
+      } else {
+        localStorage.setItem("token", res.data.token);
+        dispatch(closeSignInForm());
+      }
     } catch (e) {
       console.log(e);
     }
   };
 
-  // const []
   return (
-    <Transition.Root show={showError.open} as={Fragment}>
+    <Transition.Root show={signInModal.open} as={Fragment}>
       <Dialog
         as="div"
         className="fixed z-20 inset-0 overflow-y-auto"
@@ -123,6 +128,13 @@ const SignInForm = () => {
                             onChange={handleChange}
                           />
                         </div>
+                        {errorMessage ? (
+                          <div className="flex justify-between items-center mb-6">
+                            <span className="text-red-600 hover:text-red-800 focus:text-red-700 active:text-red-800 duration-200 transition ease-in-out">
+                              {errorMessage}
+                            </span>
+                          </div>
+                        ) : null}
 
                         <div className="flex justify-between items-center mb-6">
                           <a
