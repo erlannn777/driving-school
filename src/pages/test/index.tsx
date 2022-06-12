@@ -1,48 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import API from "../../constants/api";
 import { useAppDispatch } from "../../store";
 import { fetchTest } from "../../store/courses";
-import { useTest } from "../../store/courses/hooks";
+import { sendTestResultSuccess } from "../../store/courses/actions";
+import { useTest, useTestResult } from "../../store/courses/hooks";
 import "./styles.css";
-
-const questions = [
-  {
-    questionText: "What is the capital of France?",
-    answerOptions: [
-      { answerText: "New York", isCorrect: false },
-      { answerText: "London", isCorrect: false },
-      { answerText: "Paris", isCorrect: true },
-      { answerText: "Dublin", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "Who is CEO of Tesla?",
-    answerOptions: [
-      { answerText: "Jeff Bezos", isCorrect: false },
-      { answerText: "Elon Musk", isCorrect: true },
-      { answerText: "Bill Gates", isCorrect: false },
-      { answerText: "Tony Stark", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "The iPhone was created by which company?",
-    answerOptions: [
-      { answerText: "Apple", isCorrect: true },
-      { answerText: "Intel", isCorrect: false },
-      { answerText: "Amazon", isCorrect: false },
-      { answerText: "Microsoft", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "How many Harry Potter books are there?",
-    answerOptions: [
-      { answerText: "1", isCorrect: false },
-      { answerText: "4", isCorrect: false },
-      { answerText: "6", isCorrect: false },
-      { answerText: "7", isCorrect: true },
-    ],
-  },
-];
 
 const Test = () => {
   const dispatch = useAppDispatch();
@@ -51,6 +14,8 @@ const Test = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+
+  const testResult = useTestResult();
 
   useEffect(() => {
     if (!params.id) return;
@@ -63,17 +28,41 @@ const Test = () => {
       el.id,
       el.checked,
     ]);
-    console.log(e.target.value);
-
-    console.log(Object.fromEntries(checkedValues));
+    checkedValues.forEach(([key, value]) => {
+      // const answers: any[] = [];
+      if (value) {
+        // answers.push({
+        //   questionId: test.questions[currentQuestion].id,
+        //   answers: [
+        //     {
+        //       answerId: key,
+        //     },
+        //   ],
+        // });
+        dispatch(
+          sendTestResultSuccess({
+            questionId: test.questions[currentQuestion].id,
+            answers: [
+              {
+                answerId: key,
+              },
+            ],
+          })
+        );
+      }
+    });
+    // console.log(test);
 
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < test.questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
+      console.log("ddd");
+
+      // API.post(`/Test/SendResult?themeId=${params.id}`, testResult);
     }
   };
+  console.log(testResult);
   console.log(test);
 
   return (
@@ -98,7 +87,7 @@ const Test = () => {
                     <input
                       type="checkbox"
                       name="answer"
-                      id={answerOption.textAnswer}
+                      id={answerOption.answerId}
                     />
                   </label>
                 )

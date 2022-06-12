@@ -4,4 +4,5 @@ export interface ICoursesState {
   lectures: [];
   lecture: {};
   test: {};
+  testResult: [];
 }
