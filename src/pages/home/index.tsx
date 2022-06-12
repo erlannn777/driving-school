@@ -18,18 +18,18 @@ const Home = () => {
         <div>
           <div className="flex items-center justify-between">
             <div>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded sm:font-medium sm:p-2">
+              <button className="bg-gray-300 hover:bg-gray-400 border-none text-gray-800 font-bold py-2 px-4 rounded sm:font-medium sm:p-2">
                 Projects
               </button>
             </div>
             <div className="flex items-center justify-between bg-gray-100 p-4 sm:p-0">
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
+              <button className="bg-gray-300 hover:bg-gray-400 border-none text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 All
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
+              <button className="bg-gray-300 hover:bg-gray-400 border-none text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Ongoing
               </button>
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
+              <button className="bg-gray-300 hover:bg-gray-400 border-none text-gray-800 font-bold mx-2 py-2 px-4 rounded sm:font-medium sm:p-2 sm:mr-1">
                 Finished
               </button>
             </div>

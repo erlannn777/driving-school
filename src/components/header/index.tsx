@@ -20,21 +20,21 @@ const Header = () => {
     }
     return (
         <header className="py-2 bg-white  text-center">
-            <div className="container md:max-w-full">
+            <div className="container md:max-w-full sm:max-w-full">
                 <div
                     className="flex justify-between items-center lg:flex lg:jutify-between lg:items-center  sm:max-w-full">
                     <div className="flex items-center justify-between">
                         <Sidebar/>
-                        <div className="relative w-full w-80 lg:block md:block sm:hidden md:w-64">
+                        <div className="relative  w-64 lg:block md:block sm:hidden md:w-64">
                             <input
                                 type="search"
                                 id="search-dropdown"
-                                className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded focus:outline-none border border-gray-300 md:p-2"
+                                className="block p-2 w-72 z-20 text-sm text-gray-900 bg-gray-50 rounded focus:outline-none   border border-gray-300 "
                                 placeholder="Search"
                             />
                             <button
                                 type="submit"
-                                className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r border border-blue-700 hover:bg-blue-800 md:p-2"
+                                className="absolute top-0 right-0 p-2 text-sm font-medium text-white bg-blue-700 rounded-r border border-blue-700 hover:bg-blue-800"
                             >
                                 <svg
                                     className="w-5 h-5"
@@ -100,7 +100,7 @@ const Header = () => {
                         }
                     </div>
                 </div>
-                <div className="relative w-full w-80 lg:hidden md:hidden sm:block">
+                <div className="relative w-full w-80 lg:hidden md:hidden sm:block sm:mt-2">
                     <input
                         type="search"
                         id="search-dropdown"
