@@ -21,6 +21,6 @@ export const useTest = (): {} => {
   return useSelector((state: Store) => state.courses.test);
 };
 
-export const useTestResult = (): {} => {
+export const useTestResult = () => {
   return useSelector((state: Store) => state.courses.testResult);
 };
