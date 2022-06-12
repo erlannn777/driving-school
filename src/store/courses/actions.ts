@@ -14,3 +14,7 @@ export const fetchOneLectureSuccess = createAction<[]>(
 );
 
 export const fetchTestSuccess = createAction<[]>("courses/fetchTestSuccess");
+
+export const sendTestResultSuccess = createAction<{}>(
+  "courses/sendTestResultSuccess"
+);

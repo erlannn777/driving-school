@@ -52,3 +52,12 @@ export const fetchTest = (id: number) => async (dispatch: Dispatch) => {
     console.log(e);
   }
 };
+
+// export const sendTest = (answer: any) => async (dispatch: Dispatch) => {
+//   try {
+//     const res: any = await API.get(`/Test/GetTest?themeId=${id}`);
+//     dispatch(fetchTestSuccess(res.data));
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
