@@ -73,7 +73,7 @@ const Sidebar = () => {
 
     return (
         <div className="">
-            <div className="p-2" onClick={() => setOpen(true)}>
+            <div className="pr-2" onClick={() => setOpen(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-8 w-8 text-black"

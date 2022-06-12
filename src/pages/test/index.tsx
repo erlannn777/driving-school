@@ -41,7 +41,6 @@ const Test = () => {
       for (var pair of formData) {
         var key = pair[0];
         var value = pair[1];
-        console.log(pair);
         if (values[key]) {
           if (!(values[key] instanceof Array)) {
             values[key] = new Array(values[key]);
