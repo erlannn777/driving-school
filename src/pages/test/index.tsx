@@ -15,6 +15,7 @@ const Test = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [testEnded, setTestEnded] = useState(false);
+
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchTest(Number(params.id)) as any);
@@ -48,7 +49,7 @@ const Test = () => {
   const sendTestResult = async () => {
     try {
       await API.post(`/Test/SendResult?themeId=${params.id}`, testResult);
-      navigate("/");
+      navigate("/resulttest/"+ params.id);
     } catch (e) {
       console.log(e);
     }
@@ -59,8 +60,6 @@ const Test = () => {
       <div className="flex items-start justify-between bg-white p-4 rounded md:flex sm:block">
         <div className="border p-4 bg-gray-200 m-2 md:w-60 rounded sm:w-full sm:ml-0">
           <h2>Вопросы: 3</h2>
-          {/* <h2>Ответ</h2>
-          <h2>Балл: 0</h2> */}
         </div>
         {testEnded ? (
           <div className="w-full flex flex-col items-center">

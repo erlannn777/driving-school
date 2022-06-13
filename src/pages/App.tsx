@@ -8,6 +8,7 @@ import Courses from "./courses";
 import Lectures from "./lectures";
 import LectureDetails from "./lectures/LectureDetails";
 import Test from "./test";
+import TestResult from "./resulttest";
 function App() {
   return (
     <Providers>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/lectures/:id" element={<Lectures />} />
         <Route path="/lecture/:id" element={<LectureDetails />} />
         <Route path="/test/:id" element={<Test />} />
+        <Route path="/resulttest/:id" element={<TestResult/>}/>
       </Routes>
     </Providers>
   );
