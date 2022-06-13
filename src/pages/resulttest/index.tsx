@@ -20,9 +20,20 @@ const TestResult = () => {
     }, [])
     return (
 
-        <div className='flex items-center justify-center my-4'>
-            <div className='bg-white w-1/2 flex items-center justify-center p-4 rounded border-t-8 border-indigo-600'>
-                <h1 className='font-bold text-xl'>Резултат теста!</h1>
+        <div className='flex items-center justify-center mt-56'>
+            <div className='bg-white w-1/3 flex items-center justify-center p-4 rounded border-t-8 border-indigo-600'>
+                <div>
+                    <h1 className='font-bold text-2xl mb-2'>Результат теста</h1>
+                    <h2 className='text-xl font-bold'>{result.status}</h2>
+                    <h2>
+                        Правильный ответы:
+                        <span className='pl-2'>{result.amountRightQuestions}</span>
+                    </h2>
+                    <h2>
+                        Неправильный ответы:
+                        <span className='pl-2'>{result.amountWrongQuestions}</span>
+                    </h2>
+                </div>
             </div>
         </div>
     );
