@@ -18,3 +18,11 @@ export const fetchTestSuccess = createAction<[]>("courses/fetchTestSuccess");
 export const sendTestResultSuccess = createAction<{}>(
   "courses/sendTestResultSuccess"
 );
+
+export const clearStateSuccess = createAction<void>(
+  "courses/clearStateSuccess"
+);
+
+export const clearLecturesSuccess = createAction<void>(
+  "courses/clearLecturesSuccess"
+);

@@ -4,6 +4,7 @@ import { fetchOneCourse } from "../../store/courses";
 import { useParams } from "react-router-dom";
 import { useOneCourse } from "../../store/courses/hooks";
 import { Link } from "react-router-dom";
+import { clearLecturesSuccess } from "../../store/courses/actions";
 
 const Courses = () => {
   const dispatch = useAppDispatch();
@@ -12,6 +13,7 @@ const Courses = () => {
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchOneCourse(Number(params.id)) as any);
+    dispatch(clearLecturesSuccess());
   }, [dispatch, params.id]);
 
   return (

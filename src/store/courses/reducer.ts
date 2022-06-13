@@ -1,5 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
+  clearLecturesSuccess,
+  clearStateSuccess,
   fetchCoursesSuccess,
   fetchLecturesSuccess,
   fetchOneCourseSuccess,
@@ -33,6 +35,13 @@ export default createReducer<ICoursesState>(initialState, (builder) =>
       (state, { payload }): ICoursesState => ({ ...state, lectures: payload })
     )
     .addCase(
+      clearLecturesSuccess,
+      (state, { payload }): ICoursesState => ({
+        ...state,
+        lectures: [],
+      })
+    )
+    .addCase(
       fetchOneLectureSuccess,
       (state, { payload }): ICoursesState => ({ ...state, lecture: payload })
     )
@@ -43,4 +52,10 @@ export default createReducer<ICoursesState>(initialState, (builder) =>
     .addCase(sendTestResultSuccess, (state, { payload }) => {
       state.testResult.push(payload);
     })
+    .addCase(
+      clearStateSuccess,
+      (state, { payload }): ICoursesState => ({
+        ...initialState,
+      })
+    )
 );
