@@ -33,6 +33,7 @@ const SignUpForm = () => {
       } else {
         localStorage.setItem("token", res.data.token);
         dispatch(closeSignUpForm());
+        window.location.reload();
       }
     } catch (e) {
       console.log(e);

@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../store";
+import { fetchCourses } from "../../store/courses";
 import { openSignInForm, openSignUpForm } from "../../store/ui/actions";
 import Sidebar from "./Sidebar";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const [hideLogin, setHideLogin] = useState(true);
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (!token) return;
+    dispatch(fetchCourses() as any);
+    setHideLogin(false);
+  }, [dispatch, hideLogin, token]);
 
   const signIn = () => {
     dispatch(
@@ -14,7 +21,6 @@ const Header = () => {
         open: true,
       })
     );
-    setHideLogin(false);
   };
 
   const signUp = () => {
@@ -24,7 +30,6 @@ const Header = () => {
         open: true,
       })
     );
-    setHideLogin(false);
   };
 
   const handleLogout = () => {

@@ -31,6 +31,7 @@ const SignInForm = () => {
       } else {
         localStorage.setItem("token", res.data.token);
         dispatch(closeSignInForm());
+        window.location.reload();
       }
     } catch (e) {
       console.log(e);
