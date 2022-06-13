@@ -3,6 +3,7 @@ import { useCourses } from "../../store/courses/hooks";
 import { fetchCourses } from "../../store/courses";
 import { useAppDispatch } from "../../store";
 import { Link } from "react-router-dom";
+import { clearStateSuccess } from "../../store/courses/actions";
 
 const Home = () => {
   const courses = useCourses();
@@ -10,6 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchCourses() as any);
+    dispatch(clearStateSuccess());
   }, [dispatch]);
 
   return (
