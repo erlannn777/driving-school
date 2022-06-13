@@ -1,19 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../store";
 import { fetchOneCourse } from "../../store/courses";
 import { useParams } from "react-router-dom";
 import { useOneCourse } from "../../store/courses/hooks";
 import { Link } from "react-router-dom";
 import { clearLecturesSuccess } from "../../store/courses/actions";
+import API from "../../constants/api";
 
 const Courses = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
   const course = useOneCourse();
+  const [courseDetails, setCourseDetails] = useState<any>();
+
+  const getCourseDetails = async () => {
+    try {
+      const res = await API.get(`/Course/Get?Id=${params.id}`);
+      setCourseDetails(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchOneCourse(Number(params.id)) as any);
     dispatch(clearLecturesSuccess());
+    getCourseDetails();
   }, [dispatch, params.id]);
 
   return (
@@ -23,12 +36,9 @@ const Courses = () => {
           <div className="container sm:max-w-full">
             <div className="flex items-center justify-between">
               <div>
-                <button
-                  type="button"
-                  className="inline-block px-6 border-none py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Заказы
-                </button>
+                <span className="inline-block px-6 border-none py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+                  {courseDetails ? courseDetails.name : null}
+                </span>
               </div>
               <div className="flex items-center justify-start my-4">
                 <div className="xl:w-96">
@@ -116,7 +126,7 @@ const Courses = () => {
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Сколько лекции
+                      Количество лекции
                     </th>
                     <th
                       scope="col"
