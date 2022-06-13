@@ -10,8 +10,14 @@ import API, { publicApi } from "../../constants/api";
 
 export const fetchCourses = () => async (dispatch: Dispatch) => {
   try {
-    const res: any = await publicApi.get("/Course/GetAllCourses");
-    dispatch(fetchCoursesSuccess(res.data));
+    const token = localStorage.getItem("token");
+    if (!token) {
+      const res: any = await publicApi.get("/Course/GetAllCourses");
+      dispatch(fetchCoursesSuccess(res.data));
+    } else {
+      const res: any = await API.get("/Course/GetAllCourses");
+      dispatch(fetchCoursesSuccess(res.data));
+    }
   } catch (e) {
     console.log(e);
   }

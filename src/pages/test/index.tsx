@@ -106,7 +106,7 @@ const Test = () => {
                     type="submit"
                     className="bg-blue-700 text-white rounded hover:bg-blue-800 px-4 py-1"
                   >
-                    Next
+                    Далее
                   </button>
                 </div>
               </form>
