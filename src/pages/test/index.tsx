@@ -21,6 +21,7 @@ const Test = () => {
     dispatch(fetchTest(Number(params.id)) as any);
   }, [dispatch, params.id]);
 
+
   const handleAnswerOptionClick = (e: any) => {
     e.preventDefault();
     const answers: any[] = [];

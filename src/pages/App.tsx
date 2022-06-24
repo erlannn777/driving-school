@@ -9,6 +9,8 @@ import Lectures from "./lectures";
 import LectureDetails from "./lectures/LectureDetails";
 import Test from "./test";
 import TestResult from "./resulttest";
+import Grade from "./grade/grade";
+import Reports from "./reports/reports";
 function App() {
   return (
     <Providers>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/lecture/:id" element={<LectureDetails />} />
         <Route path="/test/:id" element={<Test />} />
         <Route path="/resulttest/:id" element={<TestResult/>}/>
+          <Route path="/resultsgrade/:id" element={<Grade/>}/>
+          <Route path='reports/:id' element={<Reports/>}/>
       </Routes>
     </Providers>
   );

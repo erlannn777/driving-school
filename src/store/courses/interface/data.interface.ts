@@ -5,4 +5,8 @@ export interface ICoursesState {
   lecture: {};
   test: {};
   testResult: Object[];
+  menuCourses:[],
+  menuButtons:[],
+  grades:[],
+  allGrades:[]
 }
