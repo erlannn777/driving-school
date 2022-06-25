@@ -8,12 +8,12 @@ const Reports = () => {
     const obj = new URLSearchParams(window.location.search)
     const href = obj.get("href")
     const allGrades = useAllGrade()
-    console.log(allGrades)
     useEffect(() => {
         if (!href) return
         console.log(obj.get("href"))
         dispatch(getAllGrades(href) as any)
     }, [])
+    console.log(allGrades)
     return (
         <div className='container'>
             <div className='flex items-center justify-center'>
